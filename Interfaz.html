@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página del Juego</title>
+  <style>
+    body {
+      background: #1b1b1b;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      border-bottom: 2px solid #444;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 70vh;
+    }
+
+    .center-buttons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .arrow {
+      background: #333;
+      color: white;
+      border: none;
+      font-size: 1.5em;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .game-button {
+      background: #007bff;
+      border: none;
+      color: white;
+      padding: 20px 60px;
+      font-size: 1.2em;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .stats-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #2c2c2c;
+      border-radius: 15px;
+      width: 300px;
+      height: 120px;
+    }
+
+    .top-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .top-buttons button {
+      background: #555;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* --- Estilos de los modales --- */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #2b2b2b;
+      padding: 30px;
+      border-radius: 15px;
+      width: 350px;
+      text-align: left;
+    }
+
+    .modal-content h2 {
+      text-align: center;
+    }
+
+    .close-btn {
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      float: right;
+      cursor: pointer;
+    }
+
+    .slider {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .achievements-list {
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 10px;
+      background: #1f1f1f;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    [Título del Juego]
+  </header>
+
+  <div class="top-buttons">
+    <button id="btn-ajustes">⚙️ Ajustes</button>
+    <button id="btn-logros">🏆 Logros</button>
+  </div>
+
+  <main>
+    <div class="center-buttons">
+      <button class="arrow" id="left-arrow">⬅️</button>
+      <button class="game-button" id="main-button">Modo 1</button>
+      <button class="arrow" id="right-arrow">➡️</button>
+    </div>
+
+    <div class="stats-box" id="stats-box">
+      <p>Estadísticas del modo seleccionado aparecerán aquí.</p>
+    </div>
+  </main>
+
+  <!-- Modal de Ajustes -->
+  <div class="modal" id="modal-ajustes">
+    <div class="modal-content">
+      <button class="close-btn" id="close-ajustes">X</button>
+      <h2>Ajustes</h2>
+      <label>Volumen de Fondo</label>
+      <input type="range" id="volumen-fondo" class="slider" min="0" max="100" value="50">
+      <label>Volumen Secundario</label>
+      <input type="range" id="volumen-secundario" class="slider" min="0" max="100" value="50">
+    </div>
+  </div>
+
+  <!-- Modal de Logros -->
+  <div class="modal" id="modal-logros">
+    <div class="modal-content">
+      <button class="close-btn" id="close-logros">X</button>
+      <h2>Logros</h2>
+      <div class="achievements-list">
+        <p>- Logro 1</p>
+        <p>- Logro 2</p>
+        <p>- Logro 3</p>
+        <p>- Logro 4</p>
+        <p>- Logro 5</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conexión al script -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego de Preguntados</title>
+
+    <!-- 🎨 Vinculación de hojas de estilo -->
+    <link rel="stylesheet" href="diseños/Preguntados.css" />
+    <link rel="stylesheet" href="diseños/Historia.css" />   
+    <link rel="stylesheet" href="diseños/Mapa.css" />
+    <link rel="stylesheet" href="diseños/Niveles.css" />
+
+    <!-- 🧠 Fuente Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 🧠 ENCABEZADO SUPERIOR FIJO -->
+    <header>
+        <h1>🧠 PREGUN-TONES</h1>
+        <p>✨ Disfruta y Aprende ✨</p>
+    </header>
+
+    <!-- 🎯 CONTENEDOR PRINCIPAL DINÁMICO -->
+    <main id="main">
+        <!-- Aquí se cargará el contenido dinámico -->
+    </main>
+
+    <!-- 📜 SCRIPTS PRINCIPALES -->
+    <script type="module" src="./Funciones/Preguntados.js"></script>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDr0s81o7vGnrus2PSwQ7eVExnbhMWmwmU",
+    authDomain: "juego-preguntados-28c2b.firebaseapp.com",
+    projectId: "juego-preguntados-28c2b",
+    storageBucket: "juego-preguntados-28c2b.firebasestorage.app",
+    messagingSenderId: "74882048233",
+    appId: "1:74882048233:web:2288bc1d793105332c9078"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+</body>
+</html>

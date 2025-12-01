@@ -1,0 +1,200 @@
+/* =========================================================
+   📦 TARJETA GENERAL (centrada con la ruleta)
+   ========================================================= */
+.nivel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.tarjeta-nivel {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  padding: 50px 60px;
+  text-align: center;
+  width: 520px; /* 🔹 más ancho para equilibrar la ruleta */
+  position: relative;
+  margin: 0 auto; /* 🔹 centra completamente el bloque */
+}
+
+/* =========================================================
+   🎡 RULETA — centrada y ajustada al cuadro
+   ========================================================= */
+.ruleta-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.ruleta-img {
+  width: 440px; /* 🔹 ligeramente más pequeña para encajar */
+  height: 440px;
+  border-radius: 50%;
+  background-image: url("../Imagenes/Ruleta.jpg");
+  background-size: cover;
+  background-position: center;
+  transform: rotate(-18deg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  position: relative;
+  transition: transform 4.5s cubic-bezier(0.25, 0.9, 0.3, 1);
+  margin: 0 auto; /* 🔹 centra visualmente */
+}
+
+/* =========================================================
+   🏷️ ETIQUETAS — centradas dentro de cada color
+   ========================================================= */
+.etiquetas {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.etiqueta {
+  position: absolute;
+  font-weight: 700;
+  font-size: 16px; /* 🔹 más pequeño para mejor ajuste */
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  transform-origin: center center;
+  text-align: center;
+}
+
+/* 📍 Posiciones más internas (entra mejor visualmente) */
+.etiqueta:nth-child(1) { /* Historia */
+  transform: rotate(300deg) translate(100px) rotate(-298deg);
+}
+.etiqueta:nth-child(2) { /* Cultura */
+  transform: rotate(20deg) translate(110px) rotate(0deg);
+}
+.etiqueta:nth-child(3) { /* Gastronomía */
+  transform: rotate(90deg) translate(110px) rotate(-72deg);
+}
+.etiqueta:nth-child(4) { /* Geografía */
+  transform: rotate(164deg) translate(110px) rotate(-134deg);
+}
+.etiqueta:nth-child(5) { /* Lugares */
+  transform: rotate(230deg) translate(100px) rotate(-216deg);
+}
+
+
+/* =========================================================
+   🔻 FLECHA — perfectamente centrada y tocando la ruleta
+   ========================================================= */
+.indicador {
+  position: absolute;
+  top: 43%;
+  right: 75px; /* 🔧 pegada al borde de la ruleta */
+  transform: translateY(0%) rotate(60deg);
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 22px solid #e53935; /* tono rojo brillante */
+  z-index: 15;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25)); /* 🔹 leve sombra para relieve */
+}
+
+/* =========================================================
+   ✨ EFECTO ACTIVO EN TEXTO
+   ========================================================= */
+.etiqueta.activa {
+  color: #ffeb3b;
+  text-shadow: 0 0 10px #fff176, 0 0 20px #ffeb3b, 0 0 30px #ffeb3b;
+  transition: all 0.4s ease-in-out;
+}
+/* ✨ Mensaje de nivel completado */
+.tarjeta-nivel.completado {
+  background: linear-gradient(135deg, #fff3e0, #ffecb3);
+  padding: 60px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  animation: popin 0.8s ease;
+}
+
+.tarjeta-nivel.completado h2.brillo {
+  font-size: 26px;
+  color: #ff9800;
+  text-shadow: 0 0 15px #ffc107, 0 0 25px #ffeb3b;
+  margin-bottom: 12px;
+}
+
+.confeti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particula {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  opacity: 0.9;
+  border-radius: 50%;
+  animation: caer 2.5s ease-in infinite;
+}
+
+@keyframes caer {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes popin {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+/* ✨ Mensaje de nivel completado */
+.tarjeta-nivel.completado {
+  background: linear-gradient(135deg, #fff3e0, #ffecb3);
+  padding: 60px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  animation: popin 0.8s ease;
+}
+
+.tarjeta-nivel.completado h2.brillo {
+  font-size: 26px;
+  color: #ff9800;
+  text-shadow: 0 0 15px #ffc107, 0 0 25px #ffeb3b;
+  margin-bottom: 12px;
+}
+
+.confeti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particula {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  opacity: 0.9;
+  border-radius: 50%;
+  animation: caer 2.5s ease-in infinite;
+}
+
+@keyframes caer {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes popin {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+

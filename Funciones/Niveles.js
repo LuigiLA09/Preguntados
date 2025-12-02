@@ -136,7 +136,16 @@ function mostrarPregunta(main, nivel, dificultad, estado, tema) {
   // 🎯 Eventos de respuesta
   main.querySelectorAll(".opcion").forEach((btn) => {
     btn.addEventListener("click", () =>
-      evaluarRespuesta(btn, preguntaActual.respuesta, preguntaActual, main, nivel, dificultad, estado, tema)
+      evaluarRespuesta(
+        btn,
+        preguntaActual.respuesta,
+        preguntaActual,
+        main,
+        nivel,
+        dificultad,
+        estado,
+        tema
+      )
     );
   });
 
@@ -199,7 +208,11 @@ function evaluarRespuesta(btn, correcta, pregunta, main, nivel, dificultad, esta
     respuestasCorrectas.push({ pregunta: pregunta.pregunta, respuesta: correcta });
     btn.style.background = "#43a047";
   } else {
-    respuestasIncorrectas.push({ pregunta: pregunta.pregunta, respuesta: btn.textContent, correcta });
+    respuestasIncorrectas.push({
+      pregunta: pregunta.pregunta,
+      respuesta: btn.textContent,
+      correcta,
+    });
     btn.style.background = "#e53935";
   }
 
@@ -245,14 +258,17 @@ function actualizarProgreso(dificultad, estado, nivel, correctas) {
   data[dificultad][estado].porcentajeEstado = Math.min((totalCorrectas / 40) * 50, 50);
 
   const estados = Object.values(data[dificultad]);
-  const porcentajeGlobal = estados.reduce((acc, e) => acc + (e.porcentajeEstado || 0), 0);
+  const porcentajeGlobal = estados.reduce(
+    (acc, e) => acc + (e.porcentajeEstado || 0),
+    0
+  );
   data[dificultad].porcentajeGlobal = Math.min(porcentajeGlobal, 100);
 
   localStorage.setItem("preguntados_historia_progreso", JSON.stringify(data));
 }
 
 /* =========================================================
-   🧠 BASE LOCAL DE PREGUNTAS - A FUTURO CONECTAR A BASE DE DATOS
+   🧠 BASE LOCAL DE PREGUNTAS
    ========================================================= */
 function obtenerPreguntas(tema, estado) {
   const base = {
@@ -295,11 +311,13 @@ function obtenerPreguntas(tema, estado) {
     }
   };
 
-  return base[estado]?.[tema] || [{ pregunta: "¿Pregunta de ejemplo?", opciones: ["A", "B", "C", "D"], respuesta: "A" }];
+  return base[estado]?.[tema] || [
+    { pregunta: "¿Pregunta de ejemplo?", opciones: ["A", "B", "C", "D"], respuesta: "A" },
+  ];
 }
 
 /* =========================================================
-   🏁 RESUMEN FINAL
+   🏁 RESUMEN FINAL (MODIFICADO — CENTRADO Y MÁS GRANDE)
    ========================================================= */
 function mostrarResumen(main, nivel, dificultad, estado) {
   clearInterval(temporizador);
@@ -308,29 +326,65 @@ function mostrarResumen(main, nivel, dificultad, estado) {
   const totalIncorrectas = respuestasIncorrectas.length;
 
   const listaCorrectas = respuestasCorrectas
-    .map((r) => `<li>✅ ${r.pregunta} → ${r.respuesta}</li>`)
+    .map((r) => `<li>✔️ ${r.pregunta} → <strong>${r.respuesta}</strong></li>`)
     .join("");
 
   const listaIncorrectas = respuestasIncorrectas
-    .map((r) => `<li>❌ ${r.pregunta} → Respondió: ${r.respuesta} (Correcta: ${r.correcta})</li>`)
+    .map(
+      (r) =>
+        `<li>❌ ${r.pregunta} → Respondió: <strong>${r.respuesta}</strong> (Correcta: ${r.correcta})</li>`
+    )
     .join("");
 
   main.innerHTML = `
-    <div class="resumen-wrapper fade-in">
-      <h2>🏁 Nivel completado</h2>
-      <p>${nivel.titulo} — ${estado}</p>
-      <p>Tiempo por pregunta: 30 segundos</p>
-      <p>✅ Correctas: ${totalCorrectas} | ❌ Incorrectas: ${totalIncorrectas}</p>
-      <h3>Detalles:</h3>
-      <ul class="resultados">${listaCorrectas}${listaIncorrectas}</ul>
-      <button id="btnVolverMapa" class="btn-secundario">← Volver al mapa</button>
+    <div class="resumen-wrapper fade-in" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.3rem;
+    ">
+      <h2 style="font-size: 2.5rem; margin-bottom: 10px;">🏁 Nivel Completado</h2>
+      <p style="font-size: 1.7rem; font-weight: bold; margin: 5px 0;">${nivel.titulo} — ${estado}</p>
+      <p style="margin: 5px 0; font-size: 1.2rem;">⏱️ Tiempo por pregunta: 30 segundos</p>
+
+      <p style="font-size: 1.5rem; margin: 20px 0;">
+        <span style="color: #2ecc71;">✔️ Correctas: ${totalCorrectas}</span> |
+        <span style="color: #e74c3c;">❌ Incorrectas: ${totalIncorrectas}</span>
+      </p>
+
+      <h3 style="font-size: 2rem; margin-top: 20px;">📘 Detalles</h3>
+
+      <ul class="resultados" style="
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+        text-align: left;
+        width: 100%;
+        max-width: 750px;
+        font-size: 1.25rem;
+        line-height: 1.6;
+      ">
+        ${listaCorrectas}${listaIncorrectas}
+      </ul>
+
+      <button id="btnVolverMapa" class="btn-secundario" style="
+        margin-top: 40px;
+        font-size: 1.4rem;
+        padding: 14px 30px;
+      ">← Volver al mapa</button>
     </div>
   `;
 
-    document.getElementById("btnVolverMapa").addEventListener("click", () => {
+  document.getElementById("btnVolverMapa").addEventListener("click", () => {
     respuestasCorrectas = [];
     respuestasIncorrectas = [];
     preguntasHechas = 0;
     mostrarMapa(main, dificultad, estado);
   });
 }
+

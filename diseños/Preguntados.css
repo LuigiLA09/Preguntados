@@ -3,11 +3,11 @@
 ============================== */
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(to bottom, #7b6ef6, #89b6ff);
+  background: linear-gradient(to bottom, #F2F0EB, #E6E3DB); /* Pantone 663 C variación */
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  color: #333;
+  color: #101820; /* Pantone Black 6 C */
 }
 
 /* ==============================
@@ -17,7 +17,8 @@ header {
   text-align: center;
   padding: 20px;
   color: white;
-  background: linear-gradient(to right, #7b6ef6, #6a67ff);
+  background: linear-gradient(to right, #4178B8, #3A5569); 
+  /* Pantone 7686 C (azul) → Pantone 7545 C (azul grisáceo) */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -32,22 +33,22 @@ header p {
 }
 
 /* ==============================
-   LAYOUT PRINCIPAL (ajustado a versión original)
+   LAYOUT PRINCIPAL 
 ============================== */
 .layout {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 30px 20px 40px 20px; /* 🔹 menos espacio arriba y abajo */
-  gap: 5px; /* 🔹 reduce separación lateral */
-  margin-top: -10px; /* 🔹 sube el bloque central */
+  padding: 30px 20px 40px 20px;
+  gap: 5px;
+  margin-top: -10px;
 }
 
 /* ==============================
    LATERALES
 ============================== */
 .side {
-  width: 20%; /* 🔹 un poco más anchas */
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,8 +69,6 @@ header p {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-/* Imágenes dentro de los contenedores laterales */
 #sidePicture img,
 #sidePictureRight img {
   width: 100%;
@@ -78,13 +77,25 @@ header p {
   border-radius: 15px;
 }
 
-/* Etiquetas de texto sobre las imágenes */
+/* ==============================
+   ETIQUETAS SOBRE IMÁGENES
+============================== */
+
+/* Edo. México → Pantone 186 C */
+#sidePicture .image-label {
+  background: rgba(200, 16, 46, 0.90); /* Pantone 186 C */
+}
+
+/* Morelos → Pantone 7481 C */
+#sidePictureRight .image-label {
+  background: rgba(38, 208, 124, 0.90); /* Pantone 7481 C */
+}
+
 .image-label {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(120, 90, 255, 0.85);
   color: white;
   padding: 6px 12px;
   border-radius: 12px;
@@ -107,12 +118,12 @@ header p {
 }
 
 canvas {
-  background: #f4f4f9;
+  background: #F5F4EE; /* Pantone 663 U (ligero para canvas) */
   border-radius: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  width: 1450px; /* 🔹 restaurado al diseño original */
-  height: 600px; /* 🔹 proporcional al diseño inicial */
-  max-width: 99%; /* 🔹 margen visual */
+  width: 1450px;
+  height: 600px;
+  max-width: 99%;
   transition: none;
   margin-top: -10px;
 }
@@ -128,7 +139,8 @@ button {
   padding: 10px 18px;
   font-size: 1rem;
   font-weight: 500;
-  background: linear-gradient(to right, #6a67ff, #7b6ef6);
+  background: linear-gradient(to right, #4178B8, #FFC72C);
+  /* Pantone 7686 C → Pantone 123 C */
   color: white;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -139,7 +151,7 @@ button:hover {
 }
 
 /* ==============================
-   TRANSICIONES SUAVES GENERALES
+   TRANSICIONES SUAVES
 ============================== */
 * {
   transition: all 0.25s ease;

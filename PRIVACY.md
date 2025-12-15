@@ -2,7 +2,7 @@
 
 Fecha de última actualización: 15 de Diciembre de 2025
 
-Esta Política de Privacidad describe cómo "Preguntados de México" (en adelante, "la Aplicación" o "el Juego") utiliza y protege la información que usted proporciona al usar la funcionalidad de "Iniciar Sesión con Google".
+Esta Política de Privacidad describe cómo "Preguntados de México" utiliza y protege la información que usted proporciona al usar la funcionalidad de "Iniciar Sesión con Google".
 
 ---
 
@@ -55,4 +55,4 @@ Al utilizar la función "Iniciar Sesión con Google" en esta Aplicación, usted 
 
 Si tiene alguna pregunta sobre esta Política de Privacidad o sobre sus datos, por favor, póngase en contacto con el desarrollador:
 
-* **Correo Electrónico:** [Tu Correo Electrónico (ej: luchog4905@gmail.com)]
+* **Correo Electrónico:** luchog4905@gmail.com

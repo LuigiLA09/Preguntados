@@ -1,52 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Juego de Preguntados</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntados de México</title>
 
-    <!-- 🎨 Vinculación de hojas de estilo -->
-    <link rel="stylesheet" href="diseños/Preguntados.css" />
-    <link rel="stylesheet" href="diseños/Historia.css" />   
-    <link rel="stylesheet" href="diseños/Mapa.css" />
-    <link rel="stylesheet" href="diseños/Niveles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- 🧠 Fuente Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Diseños/Preguntados.css">
+    <link rel="stylesheet" href="./Diseños/Historia.css">
+    <link rel="stylesheet" href="./Diseños/Mapa.css">
+    <link rel="stylesheet" href="./Diseños/Modo Libre.css">
+    <link rel="stylesheet" href="./Diseños/Niveles.css">
+    <link rel="stylesheet" href="./Diseños/Tutorial.css">
 </head>
 
 <body>
-    <!-- 🧠 ENCABEZADO SUPERIOR FIJO -->
+
     <header>
-        <h1>🧠 PREGUN-TONES</h1>
-        <p>✨ Disfruta y Aprende ✨</p>
+        <div class="logo-container">
+            <h1>Pregun-Tones</h1>
+            <p>Conoce la cultura, historia, geografía y mucho más de los estados de México.</p>
+        </div>
+        <div id="auth-status"></div>
     </header>
 
-    <!-- 🎯 CONTENEDOR PRINCIPAL DINÁMICO -->
     <main id="main">
-        <!-- Aquí se cargará el contenido dinámico -->
     </main>
 
-    <!-- 📜 SCRIPTS PRINCIPALES -->
-    <script type="module" src="./Funciones/Preguntados.js"></script>
     <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import ControladorSonido from "./Funciones/Sonido.js";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDr0s81o7vGnrus2PSwQ7eVExnbhMWmwmU",
-    authDomain: "juego-preguntados-28c2b.firebaseapp.com",
-    projectId: "juego-preguntados-28c2b",
-    storageBucket: "juego-preguntados-28c2b.firebasestorage.app",
-    messagingSenderId: "74882048233",
-    appId: "1:74882048233:web:2288bc1d793105332c9078"
-  };
+        const firebaseConfig = {
+            apiKey: "AIzaSyDr0s81o7vGnrus2PSwQ7eVExnbhMWmwmU",
+            authDomain: "juego-preguntados-28c2b.firebaseapp.com",
+            projectId: "juego-preguntados-28c2b",
+            storageBucket: "juego-preguntados-28c2b.firebasestorage.app",
+            messagingSenderId: "74882048233",
+            appId: "1:74882048233:web:2288bc1d793105332c9078"
+        };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
+        try {
+            // 1. Inicializar App
+            const app = initializeApp(firebaseConfig);
+
+            // 2. 🟢 ESTA ES LA PARTE CLAVE:
+            // Obtenemos la base de datos y la hacemos global
+            window.db = getFirestore(app);
+
+            // Creamos el controlador global para que todas las clases lo usen
+            window.controlSonidoGlobal = new ControladorSonido();
+
+            console.log("✅ Firebase y Base de Datos (window.db) listas.");
+        } catch (error) {
+            console.error("❌ ERROR AL INICIALIZAR FIREBASE:", error);
+        }
+    </script>
+
+    <script type="module" src="./Funciones/Preguntados.js"></script>
+
 </body>
+
 </html>
+

@@ -1,0 +1,244 @@
+/* =========================================================
+   🎨 MODO LIBRE.CSS — Solución Definitiva de Layout y Ruletas
+   ========================================================= */
+
+/* --- LAYOUT BASE Y CENTRADO --- */
+.modo-libre-wrapper,
+.modo-libre-ruleta,
+.modo-libre-quiz,
+.resumen-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    min-height: 100%; 
+    width: 100%;
+    font-size: 1.3rem; 
+}
+
+/* --- Transiciones y Estilo General Amigable --- */
+.fade-in { 
+    animation: fadeIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 1. TARJETA BASE (Filtros, Ruletas, Pausa, Resumen) --- */
+.tarjeta-filtro {
+    /* Fondo Blanco Restablecido */
+    background: rgba(255, 255, 255, 0.98); 
+    border-radius: 25px;
+    padding: 50px 70px; 
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: 650px; 
+    width: 90%;
+    z-index: 5;
+    box-sizing: border-box; 
+}
+
+.tarjeta-filtro h2 {
+    font-size: 2.5rem; 
+    margin-bottom: 20px;
+}
+
+/* --- Estilos de Formulario de Filtros --- */
+.filtros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; 
+    gap: 18px; 
+    margin: 25px 0;
+    align-items: center;
+}
+.filtros-grid label {
+    text-align: right;
+    font-weight: 600;
+    font-size: 1.2rem; 
+}
+.filtros-grid select,
+.filtros-grid input[type="number"] {
+    padding: 12px;
+    font-size: 1.2rem; 
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   2. RULETA DE ESTADO Y TEMA (Contenedor y Anclaje Fijo)
+   ========================================================= */
+
+/* Contenedor principal de la ruleta (Grande y Chica) */
+.ruleta-contenedor {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto; 
+    width: 400px; 
+    height: 400px;
+    overflow: hidden; 
+}
+
+/* Ruleta Base GRANDE (Estado) */
+.ruleta-base-grande {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-image: url("../Imagenes/Ruleta.jpg");
+    background-size: cover;
+    background-position: center;
+    transition: transform 0s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+/* Ruleta Base CHICA (Tema) - Fija y no usa transform: translate */
+.ruleta-base-chica {
+    width: 400px; 
+    height: 400px; 
+    background-image: url("../Imagenes/Ruleta.jpg");
+    background-size: 400px; 
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    position: absolute; 
+    top: 0;
+    left: 0;
+    
+    border: 5px solid #3F51B5;
+    border-radius: 50%;
+    z-index: 50; 
+    
+    transform: rotate(0deg); 
+    transition: transform 0s;
+}
+
+/* Indicadores */
+.indicador-estado {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    color: #E53935; 
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+.indicador-temas {
+    position: absolute;
+    right: -15px; 
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    color: #3F51B5; 
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+/* =========================================================
+   3. LAYOUT DE PREGUNTA (Quiz)
+   ========================================================= */
+.modo-libre-quiz .tarjeta-nivel {
+    background: rgba(255, 255, 255, 0.98); 
+    border-radius: 25px; 
+    padding: 40px 60px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    max-width: 800px; 
+    width: 90%;
+    text-align: center;
+}
+
+/* Encabezados y Metadatos */
+.header-nivel,
+.header-filtros {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.modo-display {
+    font-weight: 700;
+    color: #3F51B5; 
+}
+
+.nota-filtro {
+    /* Estilo para los filtros dentro de la tarjeta de pregunta */
+    font-size: 1rem;
+    color: #6C7A89;
+    font-weight: 400;
+}
+
+/* Pregunta y Opciones */
+.modo-libre-quiz .pregunta-texto {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+.modo-libre-quiz .opciones {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.modo-libre-quiz .opcion {
+    flex: 1 1 200px; 
+    min-width: 180px; 
+    padding: 18px 25px;
+    font-size: 1.25rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* Botones especiales */
+.btn-pausa {
+    background: #6C7A89;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-volver {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #6C7A89;
+    background: none;
+    padding: 8px 15px;
+    box-shadow: none;
+    border: none;
+}   
+
+.btn-ayuda-flotante {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #2196F3;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Copia también el CSS de Tutorial.js que te di antes */

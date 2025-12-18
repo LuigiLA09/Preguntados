@@ -1,0 +1,31 @@
+/* --- Panel de Volumen Mejorado --- */
+#control-sonido-global {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000; /* Por encima de todo, incluso del tutorial */
+}
+
+#panel-volumen {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid #3F51B5;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 200px;
+    display: none; /* Se activa con JS */
+}
+
+#panel-volumen.visible {
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-control label {
+    font-size: 0.8rem;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}

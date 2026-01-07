@@ -1,0 +1,104 @@
+/* =========================================================
+   🎨 CSS MAPA — FIX TUTORIAL Y ALINEACIÓN SUPERIOR
+   ========================================================= */
+
+.mapa-pantalla-completa {
+    display: flex;
+    width: 100vw; height: 100vh;
+    background: #0f172a;
+    position: fixed; top: 0; left: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar-mapa {
+    width: 420px;
+    background: #1e293b;
+    border-right: 3px solid #334155;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 🔹 Todo hacia arriba */
+}
+
+/* 🔵 ZONA SUPERIOR (Tu cuadro azul) */
+.zona-guia-superior {
+    width: 100%;
+    margin-top: 15px;
+    min-height: 100px;
+}
+
+/* Forzar que el tutorial sea blanco y ordenado */
+.zona-guia-superior h3, 
+.zona-guia-superior p, 
+.zona-guia-superior li {
+    color: #ffffff !important;
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+    list-style: none;
+}
+
+.estado-titulo-amarillo { color: #f1c40f !important; font-size: 34px; margin: 0; }
+
+.nombre-nivel-grande { color: white !important; font-size: 30px; margin: 15px 0 5px 0; }
+
+.descripcion-nivel-blanca, .txt-instruccion-blanca { 
+    color: #cbd5e1 !important; font-size: 19px; line-height: 1.5; 
+}
+
+/* Caja Dato Curioso */
+.caja-dato-curioso {
+    background: rgba(241, 196, 15, 0.15);
+    border-left: 5px solid #f1c40f;
+    padding: 20px; border-radius: 12px; margin-top: 20px;
+}
+.caja-dato-curioso strong { color: #f1c40f !important; display: block; margin-bottom: 5px; }
+.caja-dato-curioso p { color: white !important; margin: 0; }
+
+/* Botones de Nivel */
+.punto-mapa {
+    position: absolute; width: 65px; height: 65px;
+    border-radius: 50%; border: 4px solid white;
+    cursor: pointer; z-index: 10; transform: translate(-50%, -50%);
+    transition: 0.3s;
+}
+.circulo-azul { background: #3498db; box-shadow: 0 0 20px rgba(52, 152, 219, 0.4); }
+.circulo-amarillo { background: #f1c40f; box-shadow: 0 0 20px rgba(241, 196, 15, 0.4); }
+
+.bloqueado-gris {
+    background: #475569 !important; opacity: 0.7; filter: grayscale(1);
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* Mapa Verde */
+.contenedor-mapa-principal {
+    flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 40px;
+}
+.canvas-mapa {
+    position: relative; width: 95%; height: 90%;
+    border-radius: 40px; overflow: hidden; border: 5px solid #334155;
+}
+.mapa-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Botón Ayuda al Fondo */
+.btn-interrogacion-azul {
+    margin-top: auto; width: 65px; height: 65px;
+    background: #3b82f6; border-radius: 50%; border: none;
+    color: white !important; font-size: 32px; cursor: pointer;
+}   
+
+.btn-ayuda-flotante {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #2196F3;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Copia también el CSS de Tutorial.js que te di antes */
